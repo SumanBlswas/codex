@@ -1,0 +1,41 @@
+{
+  "name": "nocode-x-studio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "icon:generate": "node scripts/generate-windows-icon.js",
+    "preview": "vite preview",
+    "desktop:launch": "vite build && npx neu run",
+    "desktop:dev": "concurrently \"vite build --watch\" \"wait-on dist/index.html && npx neu run\"",
+    "desktop:dev:web": "concurrently \"npm run dev\" \"wait-on tcp:3000 && npx neu run -- --url=http://localhost:3000\"",
+    "desktop:build": "npm run build && node build-desktop.js",
+    "desktop:build:standalone": "npm run build && node build-desktop.js --standalone",
+    "desktop:build:standalone:release": "npm run build && node build-desktop.js --standalone --release",
+    "desktop:installer": "npm run desktop:build:standalone && node build-installer.js",
+    "desktop:installer:only": "node build-installer.js"
+  },
+  "dependencies": {
+    "@neutralinojs/lib": "^6.5.0",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@neutralinojs/neu": "^11.6.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.1",
+    "png-to-ico": "^3.0.1",
+    "rcedit": "^5.0.2",
+    "sharp": "^0.34.5",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "wait-on": "^9.0.4"
+  }
+}

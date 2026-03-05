@@ -1,0 +1,510 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Mode (Default) */
+    --bg-app: #030712;
+    --bg-panel: #0f172a;
+    --bg-glass: rgba(15, 23, 42, 0.7);
+    --bg-glass-strong: rgba(15, 23, 42, 0.95);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-main: #e2e8f0;
+    --text-muted: #64748b;
+    --icon-color: #94a3b8;
+    --accent-primary: #4f46e5;
+    --accent-glow: rgba(79, 70, 229, 0.5);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --toolbar-bg: rgba(15, 23, 42, 0.6);
+    --theme-transition-x: 100vw;
+    --theme-transition-y: 0px;
+    --theme-transition-radius: 150vmax;
+  }
+
+  .light-mode {
+    /* Light Mode */
+    --bg-app: #f8fafc; /* Slate-50 - Lighter/Clean */
+    --bg-panel: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85); /* More solid */
+    --bg-glass-strong: rgba(255, 255, 255, 0.98); /* Almost opaque */
+    --border-color: rgba(0, 0, 0, 0.12); /* Slightly sharper borders */
+    --text-main: #000000; /* Pure Black for Max Contrast */
+    --text-muted: #64748b; /* Slate-500 - Readable Grey */
+    --icon-color: #475569; /* Slate-600 - Visible Icons */
+    --accent-primary: #4f46e5; /* Indigo-600 - Vibrant */
+    --accent-glow: rgba(79, 70, 229, 0.15);
+    --glass-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --input-bg: #f1f5f9; /* Slate-100 - Distinct input bg */
+    --toolbar-bg: rgba(255, 255, 255, 0.9);
+  }
+
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    cursor:
+      url("/cursors/figma-arrow-dark.svg") 3 2,
+      auto;
+    @apply antialiased font-sans selection:bg-indigo-500/30 selection:text-indigo-600;
+  }
+
+  .light-mode {
+    cursor:
+      url("/cursors/figma-arrow-light.svg") 3 2,
+      auto;
+  }
+
+  a,
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  summary,
+  label[for],
+  .cursor-pointer {
+    cursor:
+      url("/cursors/figma-hand.svg") 14 7,
+      pointer !important;
+  }
+
+  .cursor-figma-default {
+    cursor:
+      url("/cursors/figma-arrow-dark.svg") 3 2,
+      auto !important;
+  }
+  .light-mode .cursor-figma-default {
+    cursor:
+      url("/cursors/figma-arrow-light.svg") 3 2,
+      auto !important;
+  }
+  .cursor-figma-pointer {
+    cursor:
+      url("/cursors/figma-hand.svg") 14 7,
+      pointer !important;
+  }
+  .cursor-figma-text {
+    cursor:
+      url("/cursors/figma-text.svg") 16 16,
+      text !important;
+  }
+  .cursor-figma-move {
+    cursor:
+      url("/cursors/figma-move.svg") 16 16,
+      move !important;
+  }
+  .cursor-figma-crosshair {
+    cursor:
+      url("/cursors/figma-crosshair.svg") 16 16,
+      crosshair !important;
+  }
+  .cursor-figma-grab {
+    cursor:
+      url("/cursors/figma-grab.svg") 12 8,
+      grab !important;
+  }
+  .cursor-figma-grabbing {
+    cursor:
+      url("/cursors/figma-grab.svg") 12 8,
+      grabbing !important;
+  }
+  .cursor-figma-ew {
+    cursor:
+      url("/cursors/figma-ew-resize.svg") 16 16,
+      ew-resize !important;
+  }
+  .cursor-figma-ns {
+    cursor:
+      url("/cursors/figma-ns-resize.svg") 16 16,
+      ns-resize !important;
+  }
+  .cursor-figma-nesw {
+    cursor:
+      url("/cursors/figma-nesw-resize.svg") 16 16,
+      nesw-resize !important;
+  }
+  .cursor-figma-nwse {
+    cursor:
+      url("/cursors/figma-nwse-resize.svg") 16 16,
+      nwse-resize !important;
+  }
+  .cursor-figma-not-allowed {
+    cursor:
+      url("/cursors/figma-not-allowed.svg") 16 16,
+      not-allowed !important;
+  }
+
+  input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+  textarea,
+  select,
+  [contenteditable="true"],
+  .cursor-text {
+    cursor:
+      url("/cursors/figma-text.svg") 16 16,
+      text !important;
+  }
+
+  .cursor-col-resize,
+  .cursor-ew-resize {
+    cursor:
+      url("/cursors/figma-ew-resize.svg") 16 16,
+      ew-resize !important;
+  }
+
+  .cursor-row-resize,
+  .cursor-ns-resize {
+    cursor:
+      url("/cursors/figma-ns-resize.svg") 16 16,
+      ns-resize !important;
+  }
+
+  .cursor-ne-resize,
+  .cursor-sw-resize,
+  .cursor-nesw-resize {
+    cursor:
+      url("/cursors/figma-nesw-resize.svg") 16 16,
+      nesw-resize !important;
+  }
+
+  .cursor-nw-resize,
+  .cursor-se-resize,
+  .cursor-nwse-resize {
+    cursor:
+      url("/cursors/figma-nwse-resize.svg") 16 16,
+      nwse-resize !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  @apply rounded-full transition-colors;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
+}
+
+/* Glassmorphism Utilities */
+@layer components {
+  .glass-panel {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-panel-strong {
+    background-color: var(--bg-glass-strong);
+    backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border-color);
+  }
+
+  .glass-toolbar {
+    background-color: var(--toolbar-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-input {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    @apply rounded-md transition-all outline-none placeholder:text-slate-400 focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50;
+  }
+
+  .glass-button {
+    background-color: rgba(125, 125, 125, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    @apply hover:bg-black/5 hover:text-indigo-500 transition-all active:scale-95 shadow-sm backdrop-blur-sm;
+  }
+  .light-mode .glass-button {
+    @apply hover:bg-white/60;
+  }
+
+  .glass-button.active {
+    background-color: var(--accent-glow);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+  }
+
+  .glass-icon-btn {
+    color: var(--icon-color);
+    @apply p-2 rounded-lg transition-all active:scale-90 hover:text-indigo-500;
+  }
+  .glass-icon-btn:hover {
+    background-color: var(--border-color);
+  }
+}
+
+/* Animation Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out forwards;
+}
+.animate-slideDown {
+  animation: slideDown 0.5s ease-out forwards;
+}
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-panelInLeft {
+  animation: panelInLeft 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-panelInRight {
+  animation: panelInRight 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Futuristic Panel Utilities */
+.panel-card {
+  background-color: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.panel-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px -5px var(--accent-glow);
+}
+
+.glow-indicator {
+  position: relative;
+}
+.glow-indicator::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    transparent,
+    var(--accent-primary)
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+.glow-indicator:hover::after {
+  opacity: 0.15;
+}
+
+/* Neon Active Tab */
+.tab-active-glow {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.15),
+    rgba(99, 102, 241, 0.05)
+  );
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  box-shadow:
+    0 0 12px -3px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Tree Connector Lines */
+.tree-line {
+  position: relative;
+}
+.tree-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-color);
+}
+.tree-node::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* Slide-in Animation */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes neonPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--accent-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--accent-glow),
+      0 0 40px rgba(79, 70, 229, 0.1);
+  }
+}
+.animate-slideInLeft {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+.animate-neonPulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes panelInLeft {
+  0% {
+    transform: translateX(calc(-100% - 2.5rem));
+  }
+  70% {
+    transform: translateX(0.55rem);
+  }
+  85% {
+    transform: translateX(-0.2rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes panelInRight {
+  0% {
+    transform: translateX(calc(100% + 2.5rem));
+  }
+  70% {
+    transform: translateX(-0.55rem);
+  }
+  85% {
+    transform: translateX(0.2rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Hide Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fail-Safe Input Styling */
+.input-dynamic {
+  color: #e2e8f0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+.light-mode .input-dynamic {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important; /* Slate-300 */
+}
+
+/* Force specific element overrides for Light Mode */
+.light-mode input,
+.light-mode select,
+.light-mode textarea {
+  color: #000000 !important; /* Nuclear Option */
+}
+
+.light-mode .glass-input {
+  color: #000000 !important;
+}
+
+/* Keep textarea text hidden in layered syntax-highlight editors */
+.color-code-editor-input {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(root) {
+  animation-duration: 980ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  will-change: clip-path;
+  contain: paint;
+  clip-path: circle(0px at var(--theme-transition-x) var(--theme-transition-y));
+  animation: themeRadialReveal 980ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes themeRadialReveal {
+  to {
+    clip-path: circle(
+      var(--theme-transition-radius) at var(--theme-transition-x)
+        var(--theme-transition-y)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    clip-path: none;
+    animation: none;
+  }
+}
+
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  backdrop-filter: none !important;
+}
+
+.theme-transitioning .glass-panel,
+.theme-transitioning .glass-panel-strong,
+.theme-transitioning .glass-toolbar {
+  box-shadow: none !important;
+}
